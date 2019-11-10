@@ -1,5 +1,7 @@
 # Simple SQL generator
 
+[![CircleCI](https://circleci.com/gh/nogsantos/sqlgen.svg?style=svg)](https://circleci.com/gh/nogsantos/sqlgen)
+
 Este problema visa criar um gerador de scripts SQL. Dado o tipo de operação, as informações de metadados, como nomes de colunas e tabela, e os parâmetros necessários, o programa criado deve gerar o script SQL correspondente no formato correto.
 A solução criada deve ser proporcionar o maior reaproveitamento de código na criação de queries que o candidato conseguir.
 
