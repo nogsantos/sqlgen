@@ -24,7 +24,6 @@ public class SampleController {
         body += "<pre>";
         body +="new Sql().select(\"pessoa\", \"pes\").columns(\"pes\", \"vei.placa\").join(\"veiculo\", \"vei\", \"rg\").build()";
         body += "</pre>";
-        body += "</h2>";
         body += "<h2>Results the string</h2>";
         body += "<pre>";
         body += sql;
