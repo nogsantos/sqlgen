@@ -6,4 +6,10 @@ interface SelectInterface {
     Select join(String join_table, String join_alias, String join_target, String operation);
 
     Select columns(String... columns);
+
+    Select where(String condition);
+
+    Select and(String condition);
+
+    Select or(String condition);
 }

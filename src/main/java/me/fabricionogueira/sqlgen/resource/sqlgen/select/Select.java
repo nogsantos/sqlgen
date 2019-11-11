@@ -8,6 +8,7 @@ public class Select implements SelectInterface, Buildable {
     private String table;
     private String alias;
     private String join_statement = "";
+    private Where where_statement;
     private Columns columns_statement;
 
     public Select(String table, String alias) {
@@ -53,25 +54,40 @@ public class Select implements SelectInterface, Buildable {
     }
 
     @Override
-    public String toString() {
-        return String.format("%s as %s", table, alias);
+    public Select where(String condition) {
+        this.where_statement = new Where(condition);
+        return this;
+    }
+
+    @Override
+    public Select and(String condition) {
+        this.where_statement.and(condition);
+        return this;
+    }
+
+    @Override
+    public Select or(String condition) {
+        this.where_statement.or(condition);
+        return this;
     }
 
     @Override
     public String build() {
         String output = String.format(
                 "select %s from %s as %s",
-                columns_statement.toString(),
-                table,
-                alias
+                this.columns_statement.toString(),
+                this.table,
+                this.alias
         );
 
-        if (join_statement != null && !join_statement.isEmpty()) {
-            output += String.format(
-                    "%s",
-                    join_statement
-            );
+        if (!this.join_statement.isEmpty()) {
+            output += String.format("%s", this.join_statement);
         }
+
+        if (this.where_statement != null) {
+            output += String.format("%s", this.where_statement.toString());
+        }
+
         return output.trim();
     }
 }

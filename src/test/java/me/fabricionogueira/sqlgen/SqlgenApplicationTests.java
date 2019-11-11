@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -68,6 +69,44 @@ class SqlgenApplicationTests {
                         "left join casa as cas on pes.cpf = cas.cpf " +
                         "right join empresa as emp on pes.cpf = emp.cpf " +
                         "cross join estado as est on pes.cpf = est.cpf"
+        )));
+    }
+
+    @Test
+    void it_should_create_where_statement() {
+        String sql = new Sql()
+                .select("pessoa", "pes")
+                .columns("pes", "vei.placa")
+                .join("veiculo", "vei", "rg")
+                .where("a = b")
+                .build();
+        assertThat(sql, is(equalTo(
+                "select pes.*, " +
+                        "vei.placa " +
+                        "from pessoa as pes " +
+                        "inner join veiculo as vei on pes.rg = vei.rg " +
+                        "where a = b"
+        )));
+    }
+
+    @Test
+    void it_should_create_where_statement_when_has_and_or_statement() {
+        String sql = new Sql()
+                .select("pessoa", "pes")
+                .columns("pes", "vei.placa")
+                .join("veiculo", "vei", "rg")
+                .where("a = b")
+                .and("c = c")
+                .or("d = d")
+                .build();
+        assertThat(sql, is(containsString(
+                "select pes.*, " +
+                        "vei.placa " +
+                        "from pessoa as pes " +
+                        "inner join veiculo as vei on pes.rg = vei.rg " +
+                        "where a = b " +
+                        "and c = c " +
+                        "or d = d"
         )));
     }
 
