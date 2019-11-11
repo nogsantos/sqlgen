@@ -10,13 +10,12 @@ public class Cross extends Join {
     public String toString() {
         return String.format(
                 "cross join %s as %s on %s.%s = %s.%s",
-                compare_table,
-                compare_alias,
-                alias,
-                target_field,
-                compare_alias,
-                target_field);
+                this.compare_table,
+                this.compare_alias,
+                this.alias,
+                this.target_field,
+                this.compare_alias,
+                this.target_field
+        );
     }
-
-
 }

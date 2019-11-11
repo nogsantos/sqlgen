@@ -22,12 +22,12 @@ public class Columns {
             stringBuilder.append(", ");
         }
 
-        cols = stringBuilder.toString().substring(0, stringBuilder.length() - 2);
+        this.cols = stringBuilder.toString().substring(0, stringBuilder.length() - 2);
     }
 
 
     @Override
     public String toString() {
-        return cols;
+        return this.cols;
     }
 }
