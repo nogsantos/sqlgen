@@ -11,7 +11,7 @@ A solução criada deve ser proporcionar o maior reaproveitamento de código na 
 2. [x] O usuário deve indicar a tabela onde ocorrerá a operação.
 3. [x] O usuário poderá indicar operações `JOIN`, sendo elas do tipo `INNER JOIN`, `LEFT OUTER JOIN`, `RIGHT OUTER JOIN`, e `CROSS JOIN`. Caso o tipo de `JOIN` não seja indicado, considerar `INNER JOIN` como padrão.
 4. [x] O usuário poderá especificar apelidos para cada tabela selecionada.
-5. [ ] O usuário poderá adicionar diferentes critérios de selecão na cláusula `WHERE`.
+5. [x] O usuário poderá adicionar diferentes critérios de selecão na cláusula `WHERE`.
 6. [ ] Os critérios de seleção da cláusula `WHERE` e outros campos parametrizados, no caso de `INSERT` e `UPDATE`, deverão aceitar objetos númericos, tanto inteiros como ponto flutuante, datas, valores booleanos e strings.
 7. [ ] Os objetos do tipo data deverão ser impressos no formato 'yyyy-mm-dd'.
 8. [ ] O usuário poderá informar o esquema do banco ao qual as tabelas selecionadas pertencem.
